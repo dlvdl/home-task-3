@@ -1,4 +1,16 @@
-export const notes = [
+export interface Note {
+  id: number
+  name: string
+  content: string
+  created: string
+  category: string
+  dates: Array<string>
+  archived: boolean
+}
+
+export type Category = 'Task' | 'Idea' | 'Quote' | 'Random Thought'
+
+export const notes: Array<Note> | [] = [
   {
     id: 254,
     name: 'Shop',
