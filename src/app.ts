@@ -1,4 +1,5 @@
 import express, { Express } from 'express'
+
 import dotenv from 'dotenv'
 import { router as notesRouter } from './routes/notes.js'
 dotenv.config()

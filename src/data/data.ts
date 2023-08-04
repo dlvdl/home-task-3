@@ -3,8 +3,8 @@ export interface Note {
   name: string
   content: string
   created: string
-  category: string
-  dates: Array<string>
+  category: 'Task' | 'Idea' | 'Quote' | 'Random Thought'
+  dates: Array<string> | undefined
   archived: boolean
 }
 
