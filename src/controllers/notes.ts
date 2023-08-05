@@ -1,9 +1,20 @@
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
-import { notes } from '../data/data.js'
-import { findNote, deleteOneNote, editOneNote, newData, createOneNote } from '../services/index.js'
+import { notes, statistic } from '../data/data.js'
+import {
+  findNote,
+  deleteOneNote,
+  editOneNote,
+  newData,
+  createOneNote,
+  computeAddedQuontity,
+  computeDeletedQuontity,
+  computeMostFrequent,
+  computeSummary,
+} from '../services/index.js'
 
 export let todos = notes
+const stat = statistic
 
 const getNotes = async (req: Request, res: Response): Promise<void> => {
   res.status(StatusCodes.OK).json({ result: todos })
@@ -23,12 +34,14 @@ const deleteNote = async (req: Request, res: Response): Promise<void> => {
     res.status(StatusCodes.NO_CONTENT)
     return
   }
+  stat.deleted = computeDeletedQuontity(stat.deleted)
   res.status(StatusCodes.OK).json({ msg: `Note with id ${id} successfully deleted!`, result: todo })
 }
 
 const createNote = async (req: Request, res: Response): Promise<void> => {
   const { category, content, name } = req.body
   todos = createOneNote({ category, content, name, data: todos })
+  stat.created = computeAddedQuontity(stat.created)
   res.status(StatusCodes.OK).json({ msg: 'Note successfully created' })
 }
 
@@ -41,7 +54,10 @@ const editNote = async (req: Request, res: Response): Promise<void> => {
 }
 
 const getStats = async (req: Request, res: Response): Promise<void> => {
-  res.send(StatusCodes.OK).json({ msg: 'agregated stat' })
+  stat.summary = computeSummary(todos)
+  stat.mostFrequentCtegory = computeMostFrequent(todos)
+
+  res.status(StatusCodes.OK).json({ msg: 'agregated stat', result: stat })
 }
 
 export { getNotes, getNote, deleteNote, createNote, editNote, getStats }

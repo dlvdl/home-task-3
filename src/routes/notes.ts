@@ -6,6 +6,7 @@ import { testID } from '../validation/testID.js'
 import { testCategory } from '../validation/testCategory.js'
 
 const router: Router = express.Router()
+router.route('/stats').get(getStats)
 router
   .route('/')
   .get(getNotes)
@@ -38,6 +39,5 @@ router
     ]),
     editNote,
   )
-router.route('/stats').get(getStats)
 
 export { router }

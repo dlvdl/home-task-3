@@ -1,4 +1,4 @@
-import { notes } from '../data/data.js'
+import { todos as notes } from '../controllers/notes.js'
 
 export const testID = () => {
   return (value: number) => {

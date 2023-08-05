@@ -1,3 +1,5 @@
+export type Category = 'Task' | 'Idea' | 'Quote' | 'Random Thought'
+
 export interface Note {
   id: number
   name: string
@@ -8,7 +10,23 @@ export interface Note {
   archived: boolean
 }
 
-export type Category = 'Task' | 'Idea' | 'Quote' | 'Random Thought'
+export interface SummaryItem {
+  category: Category
+  active: number
+  archived: number
+}
+
+export interface MostFrequentItem {
+  category: Category
+  quontity: number
+}
+
+export interface Stat {
+  deleted: number
+  created: number
+  mostFrequentCtegory: MostFrequentItem | object
+  summary: Array<SummaryItem> | []
+}
 
 export const notes: Array<Note> | [] = [
   {
@@ -75,3 +93,10 @@ export const notes: Array<Note> | [] = [
     archived: false,
   },
 ]
+
+export const statistic: Stat = {
+  deleted: 0,
+  created: 0,
+  mostFrequentCtegory: {},
+  summary: [],
+}
