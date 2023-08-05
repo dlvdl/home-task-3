@@ -1,12 +1,8 @@
-<h1 style='text-align: center'>Home task 2</h1>
+<h1 style='text-align: center'>Home task 3</h1>
 
 ## Description
 
-<p>Application for creating a notes app in React+Redux Toolkit as a web app. Users can add, edit and remove notes. </p>
-
-## Demo
-
-<a href='https://home-task-2.onrender.com/'>Link on demo</a>
+<p>Application for creating a notes app in Node+Express+Typescript. Users can add, edit, remove notes, and get summary about notes.</p>
 
 ## Project setup
 
