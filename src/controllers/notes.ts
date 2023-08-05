@@ -55,7 +55,8 @@ const editNote = async (req: Request, res: Response): Promise<void> => {
 
 const getStats = async (req: Request, res: Response): Promise<void> => {
   stat.summary = computeSummary(todos)
-  stat.mostFrequentCtegory = computeMostFrequent(todos)
+  stat.mostFrequentCategory = computeMostFrequent(todos)
+  stat.generalAmount = todos.length
 
   res.status(StatusCodes.OK).json({ msg: 'agregated stat', result: stat })
 }

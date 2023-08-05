@@ -18,14 +18,15 @@ export interface SummaryItem {
 
 export interface MostFrequentItem {
   category: Category
-  quontity: number
+  quantity: number
 }
 
 export interface Stat {
   deleted: number
   created: number
-  mostFrequentCtegory: MostFrequentItem | object
+  mostFrequentCategory: MostFrequentItem | object
   summary: Array<SummaryItem> | []
+  generalAmount: number
 }
 
 export const notes: Array<Note> | [] = [
@@ -97,6 +98,7 @@ export const notes: Array<Note> | [] = [
 export const statistic: Stat = {
   deleted: 0,
   created: 0,
-  mostFrequentCtegory: {},
+  mostFrequentCategory: {},
   summary: [],
+  generalAmount: 0,
 }

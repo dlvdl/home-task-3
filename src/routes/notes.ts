@@ -13,7 +13,7 @@ router
   .post(
     validate([
       body('content').exists().withMessage('Content is required'),
-      body('name').exists().withMessage('Name is required'),
+      body('name').exists().withMessage('Name is required').isString().withMessage('Name should be a string'),
       body('category')
         .exists()
         .withMessage('Category is required')
@@ -32,9 +32,9 @@ router
   .patch(
     validate([
       param('id').exists().isInt().custom(testID()).withMessage('There isn`t note with such id'),
-      body('content').optional(),
-      body('archived').optional(),
-      body('name').optional(),
+      body('content').optional().isString(),
+      body('archived').optional().isBoolean(),
+      body('name').optional().isString(),
       body('category').optional().custom(testCategory()).withMessage('Given category doesn`t exist'),
     ]),
     editNote,

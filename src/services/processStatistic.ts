@@ -1,11 +1,11 @@
 import { Note, SummaryItem, MostFrequentItem } from '../data/data.js'
 
-export const computeAddedQuontity = (oldQuontity: number): number => {
-  return oldQuontity + 1
+export const computeAddedQuontity = (oldQuantity: number): number => {
+  return oldQuantity + 1
 }
 
-export const computeDeletedQuontity = (oldQuontity: number): number => {
-  return oldQuontity - 1
+export const computeDeletedQuontity = (oldQuantity: number): number => {
+  return oldQuantity - 1
 }
 
 export const computeSummary = (data: Array<Note>): Array<SummaryItem> | [] => {
@@ -43,16 +43,16 @@ export const computeMostFrequent = (data: Array<Note>): MostFrequentItem => {
     const known = counts.findIndex((c) => c.category == category)
 
     if (known == -1) {
-      counts.push({ category: category, quontity: 1 })
+      counts.push({ category: category, quantity: 1 })
     } else {
-      counts[known].quontity += 1
+      counts[known].quantity += 1
     }
   }
   let mostFrequent = counts[0]
 
   for (const item of counts) {
-    const { quontity } = item
-    mostFrequent = quontity > mostFrequent.quontity ? item : mostFrequent
+    const { quantity } = item
+    mostFrequent = quantity > mostFrequent.quantity ? item : mostFrequent
   }
   return mostFrequent
 }
