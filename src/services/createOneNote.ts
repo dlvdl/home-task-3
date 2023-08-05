@@ -10,9 +10,8 @@ interface Props {
 }
 
 export const createOneNote = ({ category, content, name, data }: Props): Array<Note> | [] => {
-  console.log(content)
   const dates = extractDates.execute(content)
-  const created = new Date().toLocaleString('en')
+  const created = new Date().toLocaleString('en-uk')
   const id = Math.round(Math.random() * 100)
 
   const todo: Note = {

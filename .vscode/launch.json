@@ -3,7 +3,17 @@
     {
       "name": "Attach by Process ID",
       "processId": "${command:PickProcess}",
+
       "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "name": "Debug Typescript",
+      "program": "${workspaceFolder}\\src\\app.ts",
+      "runtimeArgs": ["-r", "ts-node/register", "-r", "tsconfig-path/register"],
+      "console": "integratedTerminal",
+      "request": "launch",
       "skipFiles": ["<node_internals>/**"],
       "type": "node"
     }
